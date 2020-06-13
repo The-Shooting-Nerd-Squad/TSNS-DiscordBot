@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/Sebiann/SebDiscordBot.svg?branch=master)](https://travis-ci.com/Sebiann/SebDiscordBot)
-# SebDiscordBot
+[![Build Status](https://travis-ci.com/Sebiann/TSNS-DiscordBot.svg?branch=master)](https://travis-ci.com/Sebiann/TSNS-DiscordBot)
+# TSNS-DiscordBot
 This is a small discord bot
 
 ## Setup
@@ -11,4 +11,4 @@ This is a small discord bot
 
 ### License
 
-All code in this repo is licensed under AGPL-3.0 Copyright © 2019 Sebiann
+All code in this repo is licensed under AGPL-3.0 Copyright © 2020 Sebiann

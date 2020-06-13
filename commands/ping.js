@@ -3,6 +3,7 @@ module.exports = {
   aliases: [''],
   usage: '',
   description: 'Display Ping',
+  adminOnly: false,
   guildOnly: false,
   args: false,
   cooldown: 10,
