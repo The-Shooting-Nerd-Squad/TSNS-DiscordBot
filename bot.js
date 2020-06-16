@@ -28,8 +28,9 @@ const reactionRoleEmoji = require('./emojiRoleMap.json')
 
 client.on('ready', () => {
   console.log(`Logged in and ready to be used.. use "${process.env.PREFIX}help".`)
-  client.user.setActivity('with JavaScript')
+  client.user.setActivity('over the Server', { type: 'WATCHING' })
 
+  // eslint-disable-next-line no-unused-vars
   client.channels.cache.get(roles_channel_id).messages.fetch(roleselect_message_id).then(m => {
     console.log('Cached reaction message.')
   }).catch(e => {
@@ -125,7 +126,7 @@ client.on('message', message => {
 // Create an event listener for new guild members
 client.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find(ch => ch.name === 'welcome')
+  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome')
   // Do nothing if the channel wasn't found on this server
   if (!channel) return
   // Send the message, mentioning the member
