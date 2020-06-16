@@ -24,6 +24,7 @@ for (const file of commandFiles) {
 
 let roles_channel_id = '666028190191452243'
 let roleselect_message_id = '721377411110797372'
+const reactionRoleEmoji = require('./emojiRoleMap.json')
 
 client.on('ready', () => {
   console.log(`Logged in and ready to be used.. use "${process.env.PREFIX}help".`)
@@ -134,55 +135,12 @@ client.on('guildMemberAdd', member => {
 client.on('messageReactionAdd', (reaction, user) => {
   if(reaction.message.id === roleselect_message_id) {
     const member = reaction.message.guild.member(user)
-    switch (reaction.emoji.id) {
-      case '666420467904675840':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Overwatch'), 'Reason')
-        break
-      case '666423599803924490':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Minecraft'), 'Reason')
-        break
-      case '666420999436107791':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'League of Legends'), 'Reason')
-        break
-      case '666547875517431858':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Beat Saber'), 'Reason')
-        break
-      case '721362159405105243':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'ESO'), 'Reason')
-        break
-      case '721343162953760842':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Valorant'), 'Reason')
-        break
-      case '721355270726615061':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Snow Runner'), 'Reason')
-        break
-      case '721348257392885781':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Terraria'), 'Reason')
-        break
-      case '721346143807733904':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Fortnite'), 'Reason')
-        break
-      case '666420991379111936':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'CSGO'), 'Reason')
-        break
-      case '666421078079569959':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Rainbow 6 Siege'), 'Reason')
-        break
-      case '666423818633347075':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'GTA'), 'Reason')
-        break
-      case '666547836866789377':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Battlefield'), 'Reason')
-        break
-      case '721342494226251849':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'PUBG'), 'Reason')
-        break
-      case '721344687448784898':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Rocket League'), 'Reason')
-        break
-      case '721347526854443018':
-        member.roles.add(member.guild.roles.cache.find(role => role.name === 'Arma'), 'Reason')
-        break
+    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.name])
+
+    if (reactionRole) {
+      member.roles.add(reactionRole, 'Add reaction role')
+    } else {
+      console.info(`Reaction "${reaction.name} ${reaction.id}" was added to the message and does not have an assigned role.`)
     }
   }
 })
@@ -190,55 +148,12 @@ client.on('messageReactionAdd', (reaction, user) => {
 client.on('messageReactionRemove', (reaction, user) => {
   if(reaction.message.id === roleselect_message_id) {
     const member = reaction.message.guild.member(user)
-    switch (reaction.emoji.id) {
-      case '666420467904675840':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Overwatch'), 'Reason')
-        break
-      case '666423599803924490':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Minecraft'), 'Reason')
-        break
-      case '666420999436107791':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'League of Legends'), 'Reason')
-        break
-      case '666547875517431858':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Beat Saber'), 'Reason')
-        break
-      case '721362159405105243':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'ESO'), 'Reason')
-        break
-      case '721343162953760842':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Valorant'), 'Reason')
-        break
-      case '721355270726615061':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Snow Runner'), 'Reason')
-        break
-      case '721348257392885781':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Terraria'), 'Reason')
-        break
-      case '721346143807733904':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Fortnite'), 'Reason')
-        break
-      case '666420991379111936':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'CSGO'), 'Reason')
-        break
-      case '666421078079569959':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Rainbow 6 Siege'), 'Reason')
-        break
-      case '666423818633347075':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'GTA'), 'Reason')
-        break
-      case '666547836866789377':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Battlefield'), 'Reason')
-        break
-      case '721342494226251849':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'PUBG'), 'Reason')
-        break
-      case '721344687448784898':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Rocket League'), 'Reason')
-        break
-      case '721347526854443018':
-        member.roles.remove(member.guild.roles.cache.find(role => role.name === 'Arma'), 'Reason')
-        break
+    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.name])
+
+    if (reactionRole) {
+      member.roles.remove(reactionRole, 'Remove reaction role')
+    } else {
+      console.info(`Reaction "${reaction.name} ${reaction.id}" was removed from message and does not have an assigned role.`)
     }
   }
 })
