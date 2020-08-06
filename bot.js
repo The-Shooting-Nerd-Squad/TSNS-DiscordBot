@@ -136,7 +136,7 @@ client.on('guildMemberAdd', member => {
 client.on('messageReactionAdd', (reaction, user) => {
   if(reaction.message.id === roleselect_message_id) {
     const member = reaction.message.guild.member(user)
-    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.name])
+    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.id])
 
     if (reactionRole) {
       member.roles.add(reactionRole, 'Add reaction role')
@@ -149,7 +149,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 client.on('messageReactionRemove', (reaction, user) => {
   if(reaction.message.id === roleselect_message_id) {
     const member = reaction.message.guild.member(user)
-    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.name])
+    let reactionRole = reaction.message.guild.roles.cache.find(role => role.name === reactionRoleEmoji[reaction.emoji.id])
 
     if (reactionRole) {
       member.roles.remove(reactionRole, 'Remove reaction role')
